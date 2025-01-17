@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-gradient">
+  <a class="navbar-brand" href="#">Ticaret Sayfası </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link bg-gradient " routerLink="/catalogue"><div>Katalog</div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/ProductFactory">Urun Ekle</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bg-gradient " routerLink="#"><div class="sr-only text-bg-primary">Sepete Git</div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/Favorites">Favoriler</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div *ngIf="cartProducts.length > 0; else noProducts">
+  <h2>Product List</h2>
+  <div *ngFor="let product of cartProducts; let i = index" class="product-card">
+    <h3>{{ product.ProductName }}</h3>
+    <p>Fiyat: {{ product.price | currency }}</p>
+    <p>Adet: {{ product.amount  }}</p>
+    <p>Toplam Fiyatı: {{ product.totalprice | currency }}</p>
+    <button (click)="removeFromCart(product)">Sepetten Çıkart</button>
+    <button (click)="decreaseAmount(product)">Adetini 1 Azalt</button>
+    <button (click)="increaseAmount(product)">Adetini 1 Arttır</button>
+
+  </div>
+  <div class="total">
+    <p><strong>Total Price: {{ totalPrice | currency }}</strong></p> <!-- Genel toplam fiyat -->
+    <button>Proceed to Payment</button>
+  </div>
+</div>
+<div *ngIf="cartProducts.length>0"></div>
+<ng-template #noProducts>
+  <p>No products available.</p>
+</ng-template>
+

@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-gradient">
+  <a class="navbar-brand" href="#">Ticaret Sayfası </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link bg-gradient " routerLink="/catalogue"><div>Katalog</div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bg-gradient " routerLink="#"><div class="sr-only text-bg-primary">Urun Ekle</div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bg-gradient " routerLink="/Cart"><div>Sepete Git</div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bg-gradient " routerLink="/Favorites"><div>Favoriler</div></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="login-form">
+  <form (ngSubmit)="createProduct(productRequestDto)">
+    <div class="mb-3">
+      <label for="name" class="form-label">isim</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="productRequestDto.name" name="name" placeholder="Ürün ADI" required>
+    </div>
+    <div class="mb-3">
+      <label for="desc" class="form-label">açıklama</label>
+      <input type="text" class="form-control" id="desc" [(ngModel)]="productRequestDto.description" name="desc" placeholder="Açıklama" required>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Fiyat</label>
+      <input type="text" class="form-control" id="price" [(ngModel)]="productRequestDto.price" name="price" placeholder="Fiyat" required>
+    </div>
+    <div class="mb-3">
+      <label for="quantity" class="form-label">Adet</label>
+      <input type="text" class="form-control" id="quantity" [(ngModel)]="productRequestDto.quantity" name="quantity" placeholder="Adet" required>
+    </div>
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-dark">Urun Oluştur</button>
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+  </form>
+
+</div>
+
+
+
